@@ -11,7 +11,7 @@ public class SortImpressionsPartitioner extends Partitioner<ImpressionKeyWritabl
 
     @Override
     public int getPartition(ImpressionKeyWritable impressionKeyWritable, LongWritable longWritable, int numPartitions) {
-        return impressionKeyWritable.getiPinYouId().hashCode() % numPartitions;
+        return (impressionKeyWritable.getiPinYouId().hashCode() & Integer.MAX_VALUE) % numPartitions;
     }
 }
 
